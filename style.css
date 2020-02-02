@@ -19,3 +19,36 @@
     background-color: #adbce6;
     color: #000000;
 }
+
+.btnFormaterase {
+    background-color: #ff2400;
+    color: #000000;
+    opacity: 0.5;
+}
+
+.textOverCity {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.cityTitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.dateTitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;font-style: italic;
+
+}
+
+.parameterText {
+    font-family: 'Roboto', sans-serif;
+    text-indent: 2em;
+    font-weight: bold;
+}
+
+.currentUVIndexText {
+    background-color: #ff2400;
+    color: #ffffff;
+}
