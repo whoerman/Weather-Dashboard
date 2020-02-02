@@ -9,13 +9,6 @@ let buttonClass = "btnFormat btn btn-outline-secondary btn-lg btn-block font-wei
 let dateToday = moment().format('LL');
 $(".dateTitle").text(`: ${dateToday} `);
 
-
-//defining the variable for animation end signal for animate.css
-var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-
-//defining the variables for animations to be used for animate.css
-var animationShake = "animated shake";
-
 //placing the City on the page
 function placeCity() {
     let currentPick = currentPickProcessed;

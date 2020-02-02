@@ -3,7 +3,7 @@
 .jumbotron {
     font-family: 'Roboto', sans-serif;
     padding: 0.2rem;
-    background-color: #00008b;
+    background-color: #117a8e;
     color: #f5f5f5 ;
 }
 
@@ -23,11 +23,11 @@
 .btnFormaterase {
     background-color: #ff2400;
     color: #000000;
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .currentWeather {
-    background-color: antiquewhite;
+    background-color: #f8f8ff;
 }
 
 .textOverCity {
@@ -62,6 +62,8 @@
 }
 
 .cardText {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     color: #ffffff;
     text-align: center;
 }
