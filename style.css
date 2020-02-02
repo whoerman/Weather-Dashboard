@@ -26,6 +26,10 @@
     opacity: 0.5;
 }
 
+.currentWeather {
+    background-color: antiquewhite;
+}
+
 .textOverCity {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
@@ -51,4 +55,13 @@
 .currentUVIndexText {
     background-color: #ff2400;
     color: #ffffff;
+}
+
+.weatherCard {
+    background-color: #117a8e;
+}
+
+.cardText {
+    color: #ffffff;
+    text-align: center;
 }
