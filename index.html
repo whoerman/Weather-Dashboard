@@ -51,31 +51,22 @@
 
                 <!--City Search Column-->
                 <div class="container searchCol col-sm-3">
-                    <h4 class="font-weight-bold"><i class="fas fa-house-damage"></i> Search for a City:</h4>
+                    <div class="row">
+                        <button type="button"
+                            class="btnFormaterase btn btn-outline-secondary btn-lg font-weight-bold m-1"
+                            id="eraseCities">Clear City List <i class="fas fa-backspace"></i></button>
+                        <h4 class="font-weight-bold"><i class="fas fa-house-damage"></i> Search for a City:</h4>
+                    </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="cityPickInfo form-control" placeholder="City, State" aria-label="City and State"
-                            aria-describedby="basic-addon2">
+                        <input type="text" class="cityPickInfo form-control" placeholder="City, State"
+                            aria-label="City and State" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="cityPickBtn btn btn-primary" type="button"><i class="fas fa-search-plus"></i></button>
+                            <button class="cityPickBtn btn btn-primary" type="button"><i
+                                    class="fas fa-search-plus"></i></button>
                         </div>
                     </div>
-
                     <!--button div to add buttons-->
-                    <div id="btnDiv">
-                        <button type="button"
-                            class="btnFormat btn btn-outline-secondary btn-lg btn-block font-weight-bold m-1">First
-                            City</button>
-                        <button type="button"
-                            class="btnFormat btn btn-outline-secondary btn-lg btn-block font-weight-bold m-1">Second
-                            City</button>
-                        <button type="button"
-                            class="btnFormat btn btn-outline-secondary btn-lg btn-block font-weight-bold m-1">Third
-                            City</button>
-                        <button type="button"
-                            class="btnFormaterase btn btn-outline-secondary btn-lg btn-block font-weight-bold m-1"
-                            id="eraseCities">Clear List <i class="fas fa-backspace"></i></button>
-                    </div>
-
+                    <div id="btnDiv"></div>
                 </div>
                 <!--end of searchCol-->
 

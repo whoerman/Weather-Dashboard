@@ -2,6 +2,9 @@
 let currentPick = "";
 let currentPickProcessed ="";
 
+//long string for bootstrap button format class
+let buttonClass = "btnFormat btn btn-outline-secondary btn-lg btn-block font-weight-bold m-1";
+
 //putting the date on the page after City
 let dateToday = moment().format('LL');
 $(".dateTitle").text(`: ${dateToday} `);
@@ -38,8 +41,13 @@ function placeCity() {
     $(".currentUVIndexText").text(` ${currentUVIndexTextV}`);
 
 // making the display button for previous picks
-function makeButton
-    
+function makeButton() {
+    let btnSetup = $("<button>");
+    btnSetup.text(currentPickProcessed);
+    btnSetup.addClass(buttonClass);
+    $("#btnDiv").prepend(btnSetup);
+}
+
 
 //buttons to listen for the city input
 $(document).ready(function () {
@@ -47,11 +55,29 @@ $(document).ready(function () {
     $(".cityPickBtn").on("click", function () {
         currentPickRough = $(".cityPickInfo").val();
         fixCityPick();
+        makeButton();
+        emptyEntry();
         placeCity();
     });
+
+    $("#eraseCities").on("click", function () {
+        emptyCityList();
+    });
+
 });
 
 //make sure the city is a legit city
 function fixCityPick() {
     currentPickProcessed = currentPickRough;
-}
+};
+
+//emptying the input 
+function emptyEntry() {
+    $(".cityPickInfo").val("");
+};
+
+//emptying the input 
+function emptyCityList() {
+    $("#btnDiv").empty();
+};
+
