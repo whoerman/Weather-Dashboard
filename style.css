@@ -1,0 +1,21 @@
+
+
+.jumbotron {
+    font-family: 'Roboto', sans-serif;
+    padding: 0.2rem;
+    background-color: #00008b;
+    color: #f5f5f5 ;
+}
+
+.searchCol {
+    font-family: 'Roboto', sans-serif;
+    padding: 1rem;
+    margin: 0rem;
+    border: 0rem;
+    background-color: #ededed;
+}
+
+.btnFormat {
+    background-color: #adbce6;
+    color: #000000;
+}
