@@ -1,6 +1,9 @@
 //set inital variables
 let cityInput = [];
 let currentPick = null;
+let responseGObj ={};
+let responseWeatherObj= {};
+let responseForecastObj ={};
 
 //long strin5 for bootstrap button format class
 let buttonClass = "btnFormat btn btn-outline-secondary btn-lg btn-block m-1";
@@ -11,14 +14,16 @@ let cardTextFormat = "cardText";
 //checking the local storage for info
 function getStorage() {
     if (localStorage.getItem("cityInput") !== null) {
-        cityInput = JSON.parse(window.localStorage.getItem('cityInput'));
-        currentPick = cityInput[0];
-        $(".cityTitle").text(currentPick);
-        console.log(currentPick);
+        window.localStorage.getItem('cityInput', JSON.stringify(cityInput)); 
+        console.log(cityInput);
         makeButtons();
     };
 };
+$(".cityTitle").text("Enter the City of your Choice to get the current weather and 5 day forecast. It can be any city worldwide.");
 getStorage();
+
+//if refreshing the page, refilling the last City's info
+
 
 //putting buttons array on page
 function makeButtons() {
@@ -33,7 +38,7 @@ function makeButtons() {
 
 //calculating today and putting it on the page
 let dateToday = moment().format('LL');
-$(".dateTitle").text(dateToday);
+$(".dateTitle").text(`Current Weather for Today:  ${dateToday}`);
 
 
 //button input and the magic starts
@@ -42,16 +47,21 @@ $(document).ready(function () {
     //erases the cityInput array and removes buttons from page
     $("#eraseCities").on("click", function () {
         $("#btnDiv").empty();
-        currentPick = cityInput[0];
+        //currentPick = cityInput[0];
         cityInput = [];
         window.localStorage.setItem('cityInput', JSON.stringify(cityInput));
+        responseGObj = {};
+        window.localStorage.setItem('cityInput', JSON.stringify(responseGObj));
+        responseWeatherObj = {};
+        window.localStorage.setItem('cityInput', JSON.stringify(responseWeatherObj));
+        responseForecastObj = {};
+        window.localStorage.setItem('cityInput', JSON.stringify(responseForecastObj));
 
     });
 
     //button to get city user input and start process
     $(".cityPickBtn").on("click", function () {
         currentPick = $(".cityPickInfo").val();
-        console.log(currentPick);
         buttonProcess();
 
         //putting in array and making a button and on page
@@ -65,7 +75,6 @@ $(document).ready(function () {
 
 
         //getting latitude and logitude from google
-
         let queryURLG = `https://maps.googleapis.com/maps/api/geocode/json?address=${currentPick}&key=AIzaSyCRTF7l44EF1KpczSGOLsMu5jewKiBDNW0`
 
         $.ajax({
@@ -73,12 +82,17 @@ $(document).ready(function () {
                 method: "GET"
             })
             .then(function (responseG) {
-                console.log(responseG);
+                //storing the object in local storage if needed
+                let responseGObj = responseG
+                console.log(responseGObj);
+                window.localStorage.setItem('responseGObj', JSON.stringify(responseGObj));
+                
+                //finding the coordinates in the response
                 let latitude = responseG.results[0].geometry.location.lat;
                 let lat3 = latitude.toFixed(3);
                 let longitutude = responseG.results[0].geometry.location.lng;
                 let lng3 = longitutude.toFixed(3);
-                $(".cityCoord").text(`  (latitute: ${lat3} & longitude: ${lng3})`)
+                $(".cityCoord").text(`Current Data:  (latitute: ${lat3} & longitude: ${lng3})`)
                 console.log(`(latitute: ${lat3} & longitude: ${lng3})`);
 
 
@@ -90,37 +104,42 @@ $(document).ready(function () {
                         method: "GET"
                     })
                     .then(function (responseWeather) {
-                        console.log(responseWeather);
-                        localInfo();
 
+                        //storing the object in local storage if needed
+                        let responseWeatherObj = responseWeather
+                        console.log(responseWeatherObj);
+                        window.localStorage.setItem('responseWeatherObj', JSON.stringify(responseWeatherObj));
+
+                        localInfo();
+                        
                         //processing the weather response to put on local page
                         function localInfo() {
-                            //processing the temp info
-                            let currentTemp = responseWeather.main.temp;
+                        //processing the temp info
+                        let currentTemp = responseWeather.main.temp; 
                             //changing from Kelvin (0K − 273.15) × 9/5 + 32 = -459.7°F
                             currentTemp = currentTemp - 273.15;
                             currentTemp = currentTemp * 9;
                             currentTemp = currentTemp / 5;
                             currentTemp = currentTemp + 32;
-                            currentTemp1 = currentTemp.toFixed(1);
-                            $(".currentTempText").text(`Temperature:  ${currentTemp1}°`);
-                            //processing the temp info
-                            let currentWind = responseWeather.wind.speed;
-                            $(".currentwindSpeedText").text(`Wind Speed:   ${currentWind} mph`);
-                            //processing the humidity info
-                            let currentHumid = responseWeather.main.humidity;
-                            $(".currentHumidText").text(`Humidity:    ${currentHumid} %`);
-                            //getting the corect icon from openweathermap
-                            let currentIcon = responseWeather.weather[0].icon;
-                            let iconURL = `http://openweathermap.org/img/wn/${currentIcon}@2x.png`
-                            let $titleImage = $("<img>");
-                            $titleImage.attr("src", iconURL);
-                            $(".cityTitle").append($titleImage);
-                            //adding a decriptions after the icon
-                            let currentConditions = responseWeather.weather[0].description;
-                            let $currentCondtext = $("<h2>");
-                            $currentCondtext.text(currentConditions);
-                            $(".cityTitle").append($currentCondtext);
+                        currentTemp1 = currentTemp.toFixed(1);
+                        $(".currentTempText").text(`Temperature:  ${currentTemp1}°`);
+                        //processing the temp info
+                        let currentWind = responseWeather.wind.speed;
+                        $(".currentwindSpeedText").text(`Wind Speed:   ${currentWind} mph`);
+                        //processing the humidity info
+                        let currentHumid = responseWeather.main.humidity;
+                        $(".currentHumidText").text(`Humidity:    ${currentHumid} %`);
+                        //getting the corect icon from openweathermap
+                        let currentIcon = responseWeather.weather[0].icon;
+                        let iconURL = `http://openweathermap.org/img/wn/${currentIcon}@2x.png`
+                        let $titleImage = $("<img>");
+                        $titleImage.attr("src", iconURL);
+                        $(".cityTitle").append($titleImage);
+                        //adding a decriptions after the icon
+                        let currentConditions = responseWeather.weather[0].description;
+                        let $currentCondtext = $("<h5>");
+                        $currentCondtext.text(currentConditions);
+                        $(".cityTitle").append($titleImage);
                         };
                     })
 
@@ -133,12 +152,18 @@ $(document).ready(function () {
                         method: "GET"
                     })
                     .then(function (responseForecast) {
+
+                        //storing the object in local storage if needed
+                        let responseForecastObj = responseForecast
+                        console.log(responseForecastObj);
+                        window.localStorage.setItem('responseForecastObj', JSON.stringify(responseForecastObj));
+
                         cardProcess();
                         // //Generating the weather cards
                         function cardProcess() {
                             $(".cardDiv").empty();
-                            for (i = 1; i < 6; i++) {
-
+                            //weathermap forecast data comes in 3 hour intervals, so pick every 8th one
+                            for (i = 0; i < 40; i=i+8) {
                                 //making the div for each card and connect the Bootstrap format
                                 let $cardSetup = $("<div>");
                                 $cardSetup.addClass(weatherCardformat);
