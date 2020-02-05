@@ -23,10 +23,11 @@
     background-color: #ff2400;
     color: #000000;
     opacity: 0.7;
+    justify-self: right;
 }
 
 .currentWeather {
-    background-color: #f8f8ff;
+    background-color: #adbce6;
 }
 
 .textOverCity {
@@ -41,13 +42,18 @@
 
 .dateTitle {
     font-family: 'Roboto', sans-serif;
-    font-weight: bold;font-style: italic;
+    font-weight: bold;
+    font-style: italic;
 
 }
 
 .h5 {
     font-family: 'Roboto', sans-serif;
-    text-indent: 2em;
+    font-weight: bold;
+}
+
+.h6 {
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
 }
 
@@ -57,12 +63,11 @@
 }
 
 .weatherCard {
-    background-color: #117a8e;
+    color: #000000;
+    background-color: #adbce6;
 }
 
 .cardText {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     color: #000000;
     text-align: center;
 }

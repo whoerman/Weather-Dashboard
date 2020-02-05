@@ -52,9 +52,6 @@
                 <!--City Search Column-->
                 <div class="container searchCol col-sm-3">
                     <div class="row">
-                        <button type="button" class="btnFormaterase btn btn-outline-secondary font-weight-bold m-1"
-                            id="eraseCities">Clear City List <i class="fas fa-backspace"></i>
-                        </button>
                         <h4 class="font-weight-bold"><i class="fas fa-house-damage"></i> Search for a City:</h4>
                     </div>
                     <div class="input-group mb-3">
@@ -64,6 +61,11 @@
                             <button class="cityPickBtn btn btn-primary" type="button"><i
                                     class="fas fa-search-plus"></i></button>
                         </div>
+                    </div>
+                    <div class="row ">
+                        <button type="button" class="btnFormaterase btn btn-outline-secondary font-weight-bold m-1"
+                        id="eraseCities">Clear City List <i class="fas fa-backspace"></i>
+                    </button>
                     </div>
                     <!--button div to add buttons-->
                     <div id="btnDiv"></div>
@@ -86,14 +88,14 @@
                         <!--current data container-->
                         <div class="container m-2">
                             <div class="row">
-                                <h5 class="parameterText">Current Data: </h5>
+                                <h5 class="m-1">Current Data: </h5>
                                 <h5 class="cityCoord"><span></span></h5>
 
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="row">
-                                        <h5>Temperature:</h5>
+                                        <h5 class= "m-1">Temperature:</h5>
                                         <h5 class="currentTempText"><span></span></h5>
                                     </div>
                                     <div class="row">
@@ -104,11 +106,11 @@
                                 <div class="col-sm-6">
                                     <div class="row">
                                         <h5>Humidity:</h5>
-                                        <h5 class="currentHumidText parameterText"><span></span></h5>
+                                        <h5 class="currentHumidText"><span></span></h5>
                                     </div>
                                     <div class="row">
                                         <h5 class="parameterText">UV Index:</h5>
-                                        <h5 class="currentUVIndexText parameterText"><span></span></h5>
+                                        <h5 class="currentUVIndexText"><span></span></h5>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +119,7 @@
                     <!--Containr for the cards-->
                     <div class="container">
                         <div class="row m-2">
-                            <h3 class="5day">5 day Forecast:</h3>
+                            <h3 class="5day">5 Day Forecast:</h3>
                         </div>
                         <div class="row cardDiv">
                         </div>
@@ -135,8 +137,7 @@
 
 
     <!-- link to my javascript-->
-    <script type="text/javascript" src="data.js"></script>
-    <script type="text/javascript" src="mainprogram.js"></script>
+    <script type="text/javascript" src="main.js"></script>
     </script>
 
 </body>
