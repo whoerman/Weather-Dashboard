@@ -11,12 +11,11 @@ let weatherCardformat = "weatherCard border border-primary col-sm-2 m-2";
 let cardImgFormat = "Img-fluid";
 let cardTextFormat = "cardText";
 
-
 //checking the local storage for info
 function getStorage() {
-    if (localStorage.getItem("cityInput") !== null) {
-        window.localStorage.getItem('cityInput', JSON.stringify(cityInput)); 
-        console.log(cityInput);
+    if (localStorage.getItem("cityInput") !== []) {
+        cityInput = JSON.parse(window.localStorage.getItem('cityInput')); 
+        currentPick= cityInput[0];
         makeButtons();
     };
 };
@@ -37,11 +36,6 @@ function makeButtons() {
     };
 };
 
-//calculating today and putting it on the page
-let dateToday = moment().format('LL');
-$(".dateTitle").text(`Current Weather for Today:  ${dateToday}`);
-
-
 //button input and the magic starts
 $(document).ready(function () {
 
@@ -56,13 +50,15 @@ $(document).ready(function () {
 
     //button to get city user input and start process
     $(".cityPickBtn").on("click", function () {
+        //calculating today and putting it on the page
+        let dateToday = moment().format('LL');
+        $(".dateTitle").text(`Current Weather for Today:  ${dateToday}`);
         currentPick = $(".cityPickInfo").val();
         buttonProcess();
 
         //putting in array and making a button and on page
         function buttonProcess() {
             cityInput.unshift(currentPick);
-            console.log(cityInput);
             $(".cityTitle").text(currentPick);
             $(".cityPickInfo").val("");
             window.localStorage.setItem('cityInput', JSON.stringify(cityInput));
@@ -78,10 +74,6 @@ $(document).ready(function () {
                 method: "GET"
             })
             .then(function (responseG) {
-                //storing the object in local storage if needed
-                let responseGObj = responseG
-                console.log(responseGObj);
-                window.localStorage.setItem('responseGObj', JSON.stringify(responseGObj));
                 
                 //finding the coordinates in the response
                 let latitude = responseG.results[0].geometry.location.lat;
@@ -89,7 +81,6 @@ $(document).ready(function () {
                 let longitutude = responseG.results[0].geometry.location.lng;
                 let lng3 = longitutude.toFixed(3);
                 $(".cityCoord").text(`Current Data:  (latitute: ${lat3} & longitude: ${lng3})`)
-                console.log(`(latitute: ${lat3} & longitude: ${lng3})`);
 
 
                 //using lat and long to get current weather
@@ -139,11 +130,6 @@ $(document).ready(function () {
                         method: "GET"
                     })
                     .then(function (responseForecast) {
-            
-
-                        //storing the object in local storage if needed
-                        let responseForecastObj = responseForecast
-                        console.log(responseForecastObj);
 
                         cardProcess();
                         // //Generating the weather cards
