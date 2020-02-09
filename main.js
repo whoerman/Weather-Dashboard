@@ -13,8 +13,30 @@ $("#btnDiv").empty();
 $(".currentWeather").empty();
 $(".cardsHeaderDiv").empty();
 $(".cardsDiv").empty();
+$(".pictureDiv").empty();
 
-//on reboot checking for memory and refilling if there
+//checking for storage
+function getStorage() {
+    if (localStorage.getItem("resultsArray") !== null) {
+        cityInput = JSON.parse(window.localStorage.getItem('cityInput'));
+        if (cityInput !== []) {
+            runDataOutputs();
+            makeButtons();
+        } else {
+            entryMessage();
+        }
+    } else {
+        entryMessage();
+    };
+};
+getStorage();
+
+//filling the pager the first time
+function entryMessage() {
+    $EntryMessage = $("<h1>");
+    $EntryMessage.text("Welcome to the Weather Planner! Enter a city to get the current weather and the 5 day forecast...");
+    $(".currentWeather").append($EntryMessage);
+};
 
 
 //putting buttons array on page
@@ -30,7 +52,7 @@ function makeButtons() {
 
 //put the data on the page
 function runDataOutputs() {
-    let resultsArray = JSON.parse(window.localStorage.getItem('resultsArray'));
+    resultsArray = JSON.parse(window.localStorage.getItem('resultsArray'));
     //making the main div for current data
     $(".currentWeather").empty();
     $currentData = $("<div>");
@@ -205,6 +227,11 @@ $(document).ready(function () {
         currentPick = $(".cityPickInfo").val();
         $(".cityPickInfo").val("");
         cityInput.unshift(currentPick);
+        window.localStorage.setItem('cityInput', JSON.stringify(cityInput));
+        $("#btnDiv").empty();
+        $(".currentWeather").empty();
+        $(".cardsHeaderDiv").empty();
+        $(".cardsDiv").empty();
         makeButtons();
         GetCurrentCoord();
         //runDataOutputs();
