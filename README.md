@@ -1,12 +1,12 @@
-![alt text](./assets/screenshottitle.jpg "Work Day Planner Header")
+![alt text](./assets/images/headerIntro.jpg "Weather Dashboard Header")
 
-# Work Day Planner
+# Weather Dashboard
 
-A simple template for a day planner, with the ability to save inputs to local storage. 
+Using multiple APIs, the current weather and 5 day forecasts are available for any city inputed by the user.. 
 
 ## Premise
 
-The need to stay organized as a coder is very important, and a well-designed planner makes all the difference. This template demonstrates organized appointment blocks easily filled by the user, with buttons to stare and erase then from local storage.
+Weather APIs are full of useful information, and weather APIs are vital for getting up to the minute info for users.
 
 ### Site repository (public)
 
@@ -23,35 +23,32 @@ This program runs the html/css/js right on github, and all css and js references
 
 * [VSCode](https://code.visualstudio.com/) - Editor
 
+## APIs used for data
+
+* [OpenCage](https://opencagedata.com/) - Source to convert city name to latitude and longitude
+
+* [OpenWeatherMap](hhttps://openweathermap.org/) - Source of weaahter information
+
 ## Reference Libraries
 
 * [Bootstrap](https://getbootstrap.com/) - Dynamic Front-end Framework library with cross-browser capabilities
+
 * [Font Awesome](https://fontawesome.com/) - vector icons
 
 * [Google Fonts](https://fonts.google.com/) - font library
 
 * [Moment JS](https://momentjs.com/) - dynamic timing
 
-![alt text](./assets/screenshotcsscode.jpg "Work Day Planner")
-
 ### Use Explanation
 
-![alt text](./assets/screenshotoverall.jpg "Work Day Planner")
+![alt text](./assets/images/searchbox.jpg "Weather planner details")
 
-When opened, the schedule blocks will be empty, unless previous has been stored in local storage.
+When opened, the user is asked for a city, unless previous has been stored in local storage, when the last enetered city will be processed and all the previous cities.
 
-Today's date will be automatically applied to top.
+All of the data is filled in dynamically with DOM manipulation through javascript.
 
-When the page is loaded, the textareas are color coded depending on the time. Past events are gray, Current time even is red, and future events are green. The color coding will refresh if the page is reloaded.
-
-By clicking on a time block, text can be written by the user.
-```
-```
-![alt text](./assets/screenshotbuttons.jpg "Work Day Planner") 
-
-The text will be saved to local storage by clicking the Save button. The Erase button will remove the text from the textarea and also remove it from local storage.
-
-If no buttons are pushed, the data will disappear upon refreshing the program. Each textarea has a specific set of buttons, and the data is only saved for the corresponding textarea.
+When the page is loaded, the weather parameters are filled in for the page. The latest data is stored in local storage for refilling on refreshing the page.
+.
 ```
 ```
 ### Acknowledgements
