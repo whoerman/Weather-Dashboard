@@ -41,7 +41,7 @@ This program runs the html/css/js right on github, and all css and js references
 
 ### Use Explanation
 
-![alt text](./assets/images/searchbox.jpg "Weather planner details")
+![alt text](./assets/images/weatherdashboardfull.jpg "Weather planner details")
 
 When opened, the user is asked for a city, unless previous has been stored in local storage, when the last enetered city will be processed and all the previous cities.
 
