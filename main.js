@@ -73,7 +73,7 @@ function runDataOutputs() {
     $currentCityText.addClass("cityTitle");
     //adding the current weather icon to the current weather
     $currentImage = $("<img>");
-    let currentIcon = `http://openweathermap.org/img/wn/${resultsArray[1].weather[0].icon}@2x.png`
+    let currentIcon = `https://openweathermap.org/img/wn/${resultsArray[1].weather[0].icon}@2x.png`
     $currentImage.attr("src", currentIcon);
     $currentImage.addClass(cardImgFormat);
     $currentCityText.append($currentImage);
@@ -147,7 +147,7 @@ function runDataOutputs() {
         $cardSetup.append($cardDateText);
         //putting image on card
         $cardImage = $("<img>");
-        let futureIcon = `http://openweathermap.org/img/wn/${resultsArray[2].list[i].weather[0].icon}@2x.png`
+        let futureIcon = `https://openweathermap.org/img/wn/${resultsArray[2].list[i].weather[0].icon}@2x.png`
         $cardImage.attr("src", futureIcon);
         $cardImage.addClass(cardImgFormat);
         $cardSetup.append($cardImage);
@@ -185,7 +185,7 @@ function GetCurrentCoord() {
         resultsArray = [];
         resultsArray.push(responseCoords);
 
-        let queryURLW = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=88dab7f3d6a8c90dc7c2922c01115f44`
+        let queryURLW = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=88dab7f3d6a8c90dc7c2922c01115f44`
 
         $.ajax({
             url: queryURLW,
@@ -193,7 +193,7 @@ function GetCurrentCoord() {
         }).then(function (responseCurrentWeather) {
             resultsArray.push(responseCurrentWeather);
 
-            let queryURLF = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=88dab7f3d6a8c90dc7c2922c01115f44`
+            let queryURLF = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=88dab7f3d6a8c90dc7c2922c01115f44`
 
             $.ajax({
                 url: queryURLF,
@@ -201,7 +201,7 @@ function GetCurrentCoord() {
             }).then(function (responseFutureWeather) {
                 resultsArray.push(responseFutureWeather);
 
-                let queryURLU = `http://api.openweathermap.org/data/2.5/uvi?lat=${latitude}&lon=${longitude}&APPID=88dab7f3d6a8c90dc7c2922c01115f44`
+                let queryURLU = `https://api.openweathermap.org/data/2.5/uvi?lat=${latitude}&lon=${longitude}&APPID=88dab7f3d6a8c90dc7c2922c01115f44`
 
                 $.ajax({
                     url: queryURLU,
