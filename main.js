@@ -185,7 +185,7 @@ function GetCurrentCoord() {
         resultsArray = [];
         resultsArray.push(responseCoords);
 
-        let queryURLW = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=88dab7f3d6a8c90dc7c2922c01115f44`
+        let queryURLW = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=0a84b9556423c72493ebe04a22425c7b`
 
         $.ajax({
             url: queryURLW,
@@ -193,7 +193,7 @@ function GetCurrentCoord() {
         }).then(function (responseCurrentWeather) {
             resultsArray.push(responseCurrentWeather);
 
-            let queryURLF = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=88dab7f3d6a8c90dc7c2922c01115f44`
+            let queryURLF = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=0a84b9556423c72493ebe04a22425c7b`
 
             $.ajax({
                 url: queryURLF,
